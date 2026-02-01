@@ -1,9 +1,9 @@
 # Vue Sidebar Kit
 
 <p align="center">
-  <img src="https://img.shields.io/npm/v/vue-sidebar-kit?color=blue" alt="npm version" />
-  <img src="https://img.shields.io/npm/l/vue-sidebar-kit" alt="license" />
-  <img src="https://img.shields.io/npm/dm/vue-sidebar-kit" alt="downloads" />
+  <img src="https://img.shields.io/npm/v/vue-sidebar-kit?cacheSeconds=60" alt="npm version" />
+  <img src="https://img.shields.io/github/license/WPDiggerStudio/vue-sidebar-kit?cacheSeconds=60" alt="license" />
+  <img src="https://img.shields.io/npm/dm/vue-sidebar-kit?cacheSeconds=60" alt="downloads" />
   <img src="https://img.shields.io/github/actions/workflow/status/WPDiggerStudio/vue-sidebar-kit/ci.yml?branch=main" alt="CI status" />
 </p>
 
