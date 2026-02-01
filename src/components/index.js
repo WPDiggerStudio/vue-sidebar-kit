@@ -1,0 +1,10 @@
+// Components barrel export
+export { default as SidebarMenu } from './SidebarMenu.vue'
+export { default as SidebarMenuItem } from './SidebarMenuItem.vue'
+export { default as SidebarMenuLink } from './SidebarMenuLink.vue'
+export { default as SidebarMenuIcon } from './SidebarMenuIcon.vue'
+export { default as SidebarMenuBadge } from './SidebarMenuBadge.vue'
+export { default as SidebarMobileDrawer } from './SidebarMobileDrawer.vue'
+export { default as SidebarTooltip } from './SidebarTooltip.vue'
+export { default as SidebarProvider } from './SidebarProvider.vue'
+export { default as SidebarTrigger } from './SidebarTrigger.vue'

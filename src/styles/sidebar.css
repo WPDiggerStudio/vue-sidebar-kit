@@ -1,0 +1,193 @@
+/**
+ * Minimal CSS for transitions and animations.
+ * This file contains NO Tailwind directives - only plain CSS.
+ * Works independently of Tailwind.
+ */
+
+/* ============================================================================
+   CSS CUSTOM PROPERTIES (Sizing & Theming Hooks)
+   ============================================================================ */
+
+:root {
+  --sidebar-width: 256px;
+  --sidebar-collapsed-width: 64px;
+  --sidebar-transition-duration: 300ms;
+  --sidebar-indent-size: 16px;
+  --sidebar-item-padding-x: 16px;
+  --sidebar-item-padding-y: 10px;
+  --sidebar-icon-size: 20px;
+  --sidebar-z-index: 50;
+  --sidebar-overlay-z-index: 40;
+}
+
+/* ============================================================================
+   COLLAPSE/EXPAND ANIMATIONS
+   ============================================================================ */
+
+.vsm-group-enter-active,
+.vsm-group-leave-active {
+  transition:
+    max-height var(--sidebar-transition-duration) ease-in-out,
+    opacity var(--sidebar-transition-duration) ease-in-out;
+  overflow: hidden;
+}
+
+.vsm-group-enter-from,
+.vsm-group-leave-to {
+  max-height: 0;
+  opacity: 0;
+}
+
+.vsm-group-enter-to,
+.vsm-group-leave-from {
+  max-height: var(--vsm-group-height, 500px);
+  opacity: 1;
+}
+
+/* ============================================================================
+   MOBILE DRAWER TRANSITIONS
+   ============================================================================ */
+
+.vsm-drawer-enter-active,
+.vsm-drawer-leave-active {
+  transition: transform var(--sidebar-transition-duration) ease-in-out;
+}
+
+.vsm-drawer-enter-from,
+.vsm-drawer-leave-to {
+  transform: translateX(-100%);
+}
+
+.vsm-drawer-enter-to,
+.vsm-drawer-leave-from {
+  transform: translateX(0);
+}
+
+/* RTL Support */
+[dir='rtl'] .vsm-drawer-enter-from,
+[dir='rtl'] .vsm-drawer-leave-to {
+  transform: translateX(100%);
+}
+
+/* ============================================================================
+   OVERLAY FADE
+   ============================================================================ */
+
+.vsm-overlay-enter-active,
+.vsm-overlay-leave-active {
+  transition: opacity var(--sidebar-transition-duration) ease-in-out;
+}
+
+.vsm-overlay-enter-from,
+.vsm-overlay-leave-to {
+  opacity: 0;
+}
+
+.vsm-overlay-enter-to,
+.vsm-overlay-leave-from {
+  opacity: 1;
+}
+
+/* ============================================================================
+   TOOLTIP
+   ============================================================================ */
+
+.vsm-tooltip-enter-active,
+.vsm-tooltip-leave-active {
+  transition:
+    opacity 150ms ease-in-out,
+    transform 150ms ease-in-out;
+}
+
+.vsm-tooltip-enter-from,
+.vsm-tooltip-leave-to {
+  opacity: 0;
+  transform: translateX(-4px);
+}
+
+.vsm-tooltip-enter-to,
+.vsm-tooltip-leave-from {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ============================================================================
+   DROPDOWN ARROW ROTATION
+   ============================================================================ */
+
+.vsm-dropdown-icon {
+  transition: transform var(--sidebar-transition-duration) ease-in-out;
+}
+
+.vsm-dropdown-icon--open {
+  transform: rotate(180deg);
+}
+
+/* ============================================================================
+   BODY SCROLL LOCK (applied via JS)
+   ============================================================================ */
+
+body.vsm-no-scroll {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+
+/* ============================================================================
+   ACCESSIBILITY - Focus Visible
+   ============================================================================ */
+
+.vsm-link:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: -2px;
+}
+
+/* ============================================================================
+   COLLAPSED MODE - Label Hide
+   ============================================================================ */
+
+.vsm-collapsed .vsm-label {
+  display: none;
+}
+
+.vsm-collapsed .vsm-badge {
+  display: none;
+}
+
+.vsm-collapsed .vsm-dropdown-icon {
+  display: none;
+}
+
+/* ============================================================================
+   LEVEL-BASED INDENTATION
+   ============================================================================ */
+
+.vsm-level-1 {
+  padding-left: calc(var(--sidebar-item-padding-x));
+}
+.vsm-level-2 {
+  padding-left: calc(
+    var(--sidebar-item-padding-x) + var(--sidebar-indent-size)
+  );
+}
+.vsm-level-3 {
+  padding-left: calc(
+    var(--sidebar-item-padding-x) + var(--sidebar-indent-size) * 2
+  );
+}
+.vsm-level-4 {
+  padding-left: calc(
+    var(--sidebar-item-padding-x) + var(--sidebar-indent-size) * 3
+  );
+}
+.vsm-level-5 {
+  padding-left: calc(
+    var(--sidebar-item-padding-x) + var(--sidebar-indent-size) * 4
+  );
+}
+
+/* Dynamic level using CSS custom property */
+.vsm-item[data-level] {
+  --level-indent: calc((var(--vsm-level, 1) - 1) * var(--sidebar-indent-size));
+}
